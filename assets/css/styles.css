@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #bfeaf5;
+}
+
+main {
+  margin: 25vh auto 0 auto;
+  background-color: white;
+  box-shadow: 3px 3px 6px black;
+  width: 80%;
+  border-radius: 15px;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+
+section {
+    padding: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#cityInfo {
+    background-color:#6E85B7;
+    border-radius: 0 15px 15px 0;
+}
+
+.class {
+    display: flex;
+}
+
+img {
+    width: 150px;
+    height: 200px;
+}
