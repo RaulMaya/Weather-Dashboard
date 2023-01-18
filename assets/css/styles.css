@@ -9,17 +9,22 @@ body {
 }
 
 main {
-  margin: 25vh auto 0 auto;
-  background-color: white;
-  box-shadow: 3px 3px 6px black;
-  width: 80%;
-  border-radius: 15px;
-  display: flex;
-  text-align: center;
-  justify-content: space-between;
+    margin: 25vh auto 0 auto;
+    background-color: white;
+    box-shadow: 3px 3px 6px black;
+    width: 80%;
+    border-radius: 15px;
 }
 
 section {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  text-align: center;
+  margin: auto;
+}
+
+article {
     padding: 1rem;
     flex-direction: row;
     flex-wrap: wrap;
@@ -30,11 +35,13 @@ section {
     border-radius: 0 15px 15px 0;
 }
 
-.class {
+.cards {
     display: flex;
 }
 
 img {
     width: 150px;
     height: 200px;
+    border-radius: 12px;
+    margin: 1rem;
 }
