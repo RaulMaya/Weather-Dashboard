@@ -54,4 +54,11 @@ img {
   border-radius: 12px;
   margin: 0.25rem;
   flex: 1 0 50px;
+  box-shadow: 3px 3px 6px #3C4048;
+}
+
+.result {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
 }
