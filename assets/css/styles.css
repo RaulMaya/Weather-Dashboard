@@ -59,6 +59,14 @@ img {
 
 .result {
   display: flex;
-  justify-content: space-between;
-  padding: 0.5rem;
+  justify-content: flex-start;
+  padding: 1rem 3rem;
+  background-color: tomato;
+}
+
+.result p {
+  display: flex;
+  background-color: #6e85b7;
+  justify-content: flex-start;
+  padding: 0.1rem 2rem;
 }

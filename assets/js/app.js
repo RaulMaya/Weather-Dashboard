@@ -1,9 +1,18 @@
 var inputCity = document.querySelector("input");
 var searchBtn = document.querySelector("button");
 
+var cityTitle = document.getElementById("city")
+var date = document.querySelectorAll(".date")
+var forecast = document.querySelectorAll(".forecast")
+var feels = document.querySelectorAll(".feels")
+var max = document.querySelectorAll(".maximum")
+var min = document.querySelectorAll(".minimum")
+var wind = document.querySelectorAll(".wind")
+var pressure = document.querySelectorAll(".pressure")
+var condition = document.querySelectorAll(".status")
+
 function sendCity(event) {
   event.preventDefault();
-  console.log(inputCity.value);
   cityData(inputCity.value);
 }
 
@@ -28,16 +37,22 @@ function cityData(city) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data.list[3]);
-      console.log(data.list[3].main);
-      console.log("DATE", data.list[3].dt_txt);
-      console.log("FORECAST", data.list[3].main.temp);
-      console.log("FEELS LIKE", data.list[3].main.feels_like);
-      console.log("MAX", data.list[3].main.temp_min);
-      console.log("MIN", data.list[3].main.temp_max);
-      console.log("WIND", data.list[3].wind.speed);
-      console.log("PRESSURE", data.list[3].main.pressure);
+      var counter = 3;
+      console.log(data);
       console.log("STATUS", data.list[3].weather[0].description, `http://openweathermap.org/img/wn/${data.list[3].weather[0].icon}@2x.png`);
+      for (var i = 0; i < 5; i++) {
+        cityTitle.textContent = city
+        date[i].textContent = data.list[counter].dt_txt
+        forecast[i].textContent = data.list[counter].main.temp
+        feels[i].textContent = data.list[counter].main.feels_like
+        max[i].textContent = data.list[counter].main.temp_max
+        min[i].textContent = data.list[counter].main.temp_min
+        wind[i].textContent = data.list[counter].wind.speed
+        pressure[i].textContent = data.list[counter].main.pressure
+        condition[i].textContent = data.list[counter].weather[0].description
+        console.log(counter)
+        counter = counter + 8
+      }
       // console.log(data.list[11].dt_txt)
       // console.log(data.list[19].dt_txt)
       // console.log(data.list[27].dt_txt)
