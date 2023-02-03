@@ -11,54 +11,57 @@
       href="assets/images/weatherFavicon.png"
     />
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <script src="assets/js/app.js" defer></script>
     <script src="assets/js/apiKey.js" defer></script>
+    <script src="assets/js/app.js" defer></script>
+  
   </head>
   <body>
     <header></header>
     <main>
-        <article id="mainDashboard">
-          <h3>Weather <strong>Dashboard</strong></h3>
-          <input type="text" placeholder="Search city" />
+      <article id="mainDashboard">
+        <h3>Weather <strong>Dashboard</strong></h3>
+        <form>
+          <input type="text" placeholder="Search city" required/>
           <button>Search</button>
-          <hr />
-          <h3>Top <strong>Cities</strong></h3>
-          <div class="cards">
-            <div class="card">
-              <img src="assets/images/amsterdam.png" alt="" />
-              <p>Amsterdam</p>
-            </div>
-            <div class="card">
-              <img src="assets/images/newyork.png" alt="" />
-              <p>New York</p>
-            </div>
-            <div class="card">
-              <img src="assets/images/london.png" alt="" />
-              <p>London</p>
-            </div>
-            <div class="card">
-              <img src="assets/images/rome.png" alt="" />
-              <p>Rome</p>
-            </div>
-            <div class="card">
-              <img src="assets/images/paris.png" alt="" />
-              <p>Pairs</p>
-            </div>
+        </form>
+        <hr />
+        <h3>Top <strong>Cities</strong></h3>
+        <div class="cards">
+          <div class="card">
+            <img src="assets/images/amsterdam.png" alt="" />
+            <p>Amsterdam</p>
           </div>
-          <h2>Results</h2>
-          <div>Sunday</div>
-          <div>Monday</div>
-          <div>Tuesday</div>
-          <div>Wedsndays</div>
-          <div>Thursday</div>
-          <div>Friday</div>
-          <div>Saturday</div>
-        </article>
-        <article id="cityInfo">
-          <h3>City <strong>Information</strong></h3>
-          <input type="text" placeholder="Search city" />
-          <p>Information about a city</p>
-        </article>
+          <div class="card">
+            <img src="assets/images/newyork.png" alt="" />
+            <p>New York</p>
+          </div>
+          <div class="card">
+            <img src="assets/images/london.png" alt="" />
+            <p>London</p>
+          </div>
+          <div class="card">
+            <img src="assets/images/rome.png" alt="" />
+            <p>Rome</p>
+          </div>
+          <div class="card">
+            <img src="assets/images/paris.png" alt="" />
+            <p>Pairs</p>
+          </div>
+        </div>
+        <h2>Next 5-Day Forescast</h2>
+        <div>Sunday</div>
+        <div>Monday</div>
+        <div>Tuesday</div>
+        <div>Wedsndays</div>
+        <div>Thursday</div>
+        <div>Friday</div>
+        <div>Saturday</div>
+      </article>
+      <article id="cityInfo">
+        <h3>City <strong>Information</strong></h3>
+        <input type="text" placeholder="Search city" />
+        <p>Information about a city</p>
+      </article>
     </main>
     <footer></footer>
   </body>
