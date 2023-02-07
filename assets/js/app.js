@@ -18,6 +18,10 @@ var amsterdam = document.getElementById("amsterdam")
 var london = document.getElementById("london")
 
 var currTemp = document.querySelector(".currentTemp")
+var currMax = document.querySelector(".currentMax")
+var currMin = document.querySelector(".currentMin")
+var currDt = document.querySelector(".currentDt")
+var currPlace = document.querySelector(".currentPlace")
 
 function sendCity(event) {
   event.preventDefault();
@@ -84,7 +88,11 @@ function additionalStats(lat, lon){
     })
     .then(function (data) {
       console.log(data);
-      currTemp.textContent = data.main.temp + " C°"
+      currTemp.textContent = data.main.temp + " C°";
+      currDt.textContent = data.dt;
+      currMax.textContent = data.main.temp_max + " C°";
+      currMin.textContent = data.main.temp_min + " C°";
+      currPlace.textContent = data.name + ", " + data.sys.country
     });
 }
 
@@ -95,7 +103,7 @@ paris.addEventListener("click", function() {
   cityData("Paris")
 })
 rome.addEventListener("click", function() {
-  cityData("Rome")
+  cityData("Rome,It")
 })
 ny.addEventListener("click", function() {
   cityData("New York")
