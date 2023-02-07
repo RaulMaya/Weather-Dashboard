@@ -11,6 +11,12 @@ var wind = document.querySelectorAll(".wind");
 var pressure = document.querySelectorAll(".pressure");
 var condition = document.querySelectorAll(".status");
 
+var paris = document.getElementById("paris")
+var ny = document.getElementById("newyork")
+var rome = document.getElementById("rome")
+var amsterdam = document.getElementById("amsterdam")
+var london = document.getElementById("london")
+
 function sendCity(event) {
   event.preventDefault();
   cityData(inputCity.value);
@@ -70,3 +76,18 @@ function cityData(city) {
 }
 
 searchBtn.addEventListener("click", sendCity);
+paris.addEventListener("click", function() {
+  cityData("Paris")
+})
+rome.addEventListener("click", function() {
+  cityData("Rome")
+})
+ny.addEventListener("click", function() {
+  cityData("New York")
+})
+london.addEventListener("click", function() {
+  cityData("London")
+})
+amsterdam.addEventListener("click", function() {
+  cityData("Amsterdam")
+})
