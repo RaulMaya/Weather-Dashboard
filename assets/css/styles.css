@@ -34,6 +34,7 @@ article {
   background-color: #6e85b7;
   border-radius: 0 15px 15px 0;
   width: 30%;
+  display: flex;
 }
 
 #mainDashboard {
@@ -56,6 +57,38 @@ article {
   margin: 0.25rem;
   flex: 1 0 50px;
   box-shadow: 3px 3px 6px #3c4048;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.card img:hover {
+  width: 155px;
+  height: 205px;
+}
+
+.card:nth-child(1) img:hover {
+  box-shadow: 0 0 3px 1.5px #0096FF, 0 0 6px 3px #00D7FF;
+  transition: all 0.5s;
+}
+
+.card:nth-child(2) img:hover {
+  box-shadow: 0 0 3px 1.5px #E5E5CB, 0 0 6px 3px #D5CEA3;
+  transition: all 0.5s;
+}
+
+.card:nth-child(3) img:hover {
+  box-shadow: 0 0 3px 1.5px #BFACE2, 0 0 6px 3px #A084DC;
+  transition: all 0.5s;
+}
+
+.card:nth-child(4) img:hover {
+  box-shadow: 0 0 3px 1.5px #86E5FF, 0 0 6px 3px #0081C9;
+  transition: all 0.5s;
+}
+
+.card:nth-child(5) img:hover {
+  box-shadow: 0 0 3px 1.5px #F0997D, 0 0 6px 3px #A75D5D;
+  transition: all 0.5s;
 }
 
 .result {
@@ -96,25 +129,3 @@ form {
   width: 50px;
   height: 50px;
 }
-
-/* body .wrap a:nth-of-type(2):before {
-  content: "";
-  position: absolute;
-  width: calc(100% + 8px);
-  height: calc(100% + 8px);
-  top: calc(4px/-1);
-  left: calc(4px/-1);
-  background: linear-gradient(to right, #222 0%, #222 100%), linear-gradient(to top, #222 50%, transparent 50%), linear-gradient(to top, #222 50%, transparent 50%), linear-gradient(to right, #222 0%, #222 100%), linear-gradient(to left, #222 0%, #222 100%);
-  background-size: 100% 4px, 4px 200%, 4px 200%, 0% 4px, 0% 4px;
-  background-position: 50% 100%, 0% 0%, 100% 0%, 100% 0%, 0% 0%;
-  background-repeat: no-repeat, no-repeat;
-  transition: transform 0.2s ease-in-out, background-position 0.2s ease-in-out, background-size 0.2s ease-in-out;
-  transform: scaleX(0) rotate(180deg);
-  transition-delay: 0.4s, 0.2s, 0s;
-}
-body .wrap a:nth-of-type(2):hover:before {
-  background-size: 200% 4px, 4px 400%, 4px 400%, 55% 4px, 55% 4px;
-  background-position: 50% 100%, 0% 100%, 100% 100%, 100% 0%, 0% 0%;
-  transform: scaleX(1) rotate(180deg);
-  transition-delay: 0s, 0.2s, 0.4s;
-} */
