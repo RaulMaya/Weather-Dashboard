@@ -22,6 +22,14 @@ hr {
   background-color: #86e5ff
 }
 
+#mainDashboard hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #00005c;
+  height: 3px;
+  background-color: #00005c
+}
+
 main {
   background-color: white;
   box-shadow: 3px 3px 6px #3c4048;

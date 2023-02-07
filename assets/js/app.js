@@ -1,5 +1,4 @@
-// var inputCity = document.querySelector("input");
-// var searchBtn = document.querySelector("button");
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 var cityTitle = document.getElementById("city");
 var date = document.querySelectorAll(".date");
@@ -60,9 +59,14 @@ function cityData(city) {
       var lon = data.city.coord.lon;
       additionalStats(lat, lon);
       for (var i = 0; i < 5; i++) {
-        cityTitle.textContent = data.city.name;
+        cityTitle.textContent = " for " + data.city.name;
         date[i].textContent = data.list[counter].dt_txt;
-        forecast[i].textContent = data.list[counter].main.temp + " C° ☀️";
+        if (data.list[counter].main.temp < 20) {
+          var weatherEmoji = "❄️";
+        } else {
+          var weatherEmoji = "☀️";
+        }
+        forecast[i].textContent = data.list[counter].main.temp + " C° " + weatherEmoji;
         feels[i].textContent = `(${data.list[counter].main.feels_like} C°)`;
         max[i].textContent = data.list[counter].main.temp_max + " C° 🔺";
         min[i].textContent = data.list[counter].main.temp_min + " C° 🔻";
@@ -95,14 +99,21 @@ function additionalStats(lat, lon) {
     })
     .then(function (data) {
       console.log(data);
+      if (data.main.temp < 20) {
+        var weatherFace = "🥶";
+      } else if (data.main.temp > 28) {
+        var weatherFace = "🥵";
+      } else {
+        var weatherFace = "😎";
+      }
       currTemp.textContent = data.main.temp + " C°";
       var dateObj = new Date(parseInt(data.dt + "000"));
       currDt.textContent =
-        dateObj.getMonth() +
+        months[dateObj.getMonth()] +
         "-" +
         dateObj.getDate() +
         "-" +
-        dateObj.getFullYear();
+        dateObj.getFullYear() + " " +weatherFace;
       // currDt.innerHTML = `<div>${
       //   dateObj.getMonth() +
       //   "-" +
