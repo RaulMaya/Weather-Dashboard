@@ -1,5 +1,5 @@
-var inputCity = document.querySelector("input");
-var searchBtn = document.querySelector("button");
+// var inputCity = document.querySelector("input");
+// var searchBtn = document.querySelector("button");
 
 var cityTitle = document.getElementById("city");
 var date = document.querySelectorAll(".date");
@@ -25,6 +25,8 @@ var currPlace = document.querySelector(".currentPlace");
 var currFl = document.querySelector(".currentFl");
 var sunset = document.querySelector(".sunset");
 var sunrise = document.querySelector(".sunrise");
+
+var inputText = document.getElementById("searchText");
 
 function sendCity(event) {
   event.preventDefault();
@@ -112,8 +114,8 @@ function additionalStats(lat, lon) {
       //   data.weather[0].icon
       // }@2x.png"
       // alt="weatherCondition">`;
-      currMax.textContent ="Max: " +  data.main.temp_max + " C° 🔻";
-      currMin.textContent ="Min: " +   data.main.temp_min + " C° 🔻";
+      currMax.textContent = "Max: " + data.main.temp_max + " C° 🔻";
+      currMin.textContent = "Min: " + data.main.temp_min + " C° 🔻";
       currPlace.textContent = data.name + ", " + data.sys.country;
       currFl.textContent = "Feels like: " + data.main.feels_like + " C°";
       var sunriseObj = new Date(parseInt(data.sys.sunrise + "000"));
@@ -149,7 +151,7 @@ function additionalStats(lat, lon) {
     });
 }
 
-searchBtn.addEventListener("click", sendCity);
+//searchBtn.addEventListener("click", sendCity);
 paris.addEventListener("click", function () {
   cityData("Paris");
 });
@@ -164,4 +166,15 @@ london.addEventListener("click", function () {
 });
 amsterdam.addEventListener("click", function () {
   cityData("Amsterdam");
+});
+inputText.addEventListener("keydown", function handle(e) {  
+  console.log(e.key)
+  if (e.key == "Enter") {
+    console.log(e.key)
+    console.log(this.value)
+    e.preventDefault()
+    cityData(this.value)
+  }
+
+  return false;
 });
