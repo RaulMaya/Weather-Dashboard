@@ -30,14 +30,15 @@ article {
   padding: 1rem;
 }
 
-#cityInfo {
-  background-color: #6e85b7;
-  border-radius: 0 15px 15px 0;
-  width: 30%;
-}
-
 #mainDashboard {
   width: 70%;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 1rem 0rem 1rem 0rem;
 }
 
 .cards {
@@ -66,27 +67,27 @@ article {
 }
 
 .card:nth-child(1) img:hover {
-  box-shadow: 0 0 3px 1.5px #0096FF, 0 0 6px 3px #00D7FF;
+  box-shadow: 0 0 3px 1.5px #0096ff, 0 0 6px 3px #00d7ff;
   transition: all 0.5s;
 }
 
 .card:nth-child(2) img:hover {
-  box-shadow: 0 0 3px 1.5px #E5E5CB, 0 0 6px 3px #D5CEA3;
+  box-shadow: 0 0 3px 1.5px #e5e5cb, 0 0 6px 3px #d5cea3;
   transition: all 0.5s;
 }
 
 .card:nth-child(3) img:hover {
-  box-shadow: 0 0 3px 1.5px #BFACE2, 0 0 6px 3px #A084DC;
+  box-shadow: 0 0 3px 1.5px #bface2, 0 0 6px 3px #a084dc;
   transition: all 0.5s;
 }
 
 .card:nth-child(4) img:hover {
-  box-shadow: 0 0 3px 1.5px #86E5FF, 0 0 6px 3px #0081C9;
+  box-shadow: 0 0 3px 1.5px #86e5ff, 0 0 6px 3px #0081c9;
   transition: all 0.5s;
 }
 
 .card:nth-child(5) img:hover {
-  box-shadow: 0 0 3px 1.5px #F0997D, 0 0 6px 3px #A75D5D;
+  box-shadow: 0 0 3px 1.5px #f0997d, 0 0 6px 3px #a75d5d;
   transition: all 0.5s;
 }
 
@@ -122,8 +123,8 @@ h2 {
   font-size: medium;
 }
 
-form {
-  padding-bottom: 1rem;
+.header h3 {
+  padding: 0;
 }
 
 .wheatherLogo {
@@ -133,4 +134,21 @@ form {
   height: 50px;
 }
 
+#cityInfo {
+  background-color: #00005c;
+  background-image: url("../images/cloudbg.jpg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 0 15px 15px 0;
+  width: 30%;
+  text-align: center;
+}
 
+#cityInfo h3,
+#cityInfo p {
+  color: white;
+}
+
+#cityInfo .currentTemp {
+  font-size: 4rem;
+}

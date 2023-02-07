@@ -17,6 +17,8 @@ var rome = document.getElementById("rome")
 var amsterdam = document.getElementById("amsterdam")
 var london = document.getElementById("london")
 
+var currTemp = document.querySelector(".currentTemp")
+
 function sendCity(event) {
   event.preventDefault();
   cityData(inputCity.value);
@@ -45,11 +47,9 @@ function cityData(city) {
     .then(function (data) {
       var counter = 3;
       console.log(data);
-      console.log(
-        "STATUS",
-        data.list[3].weather[0].description,
-        `http://openweathermap.org/img/wn/${data.list[3].weather[0].icon}@2x.png`
-      );
+      var lat = data.city.coord.lat;
+      var lon = data.city.coord.lon;
+      additionalStats(lat, lon);
       for (var i = 0; i < 5; i++) {
         cityTitle.textContent = city;
         date[i].textContent = data.list[counter].dt_txt;
@@ -74,6 +74,21 @@ function cityData(city) {
       // console.log(data.list[35].dt_txt)
     });
 }
+
+function additionalStats(lat, lon){
+  var requestUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${key}`;
+
+  fetch(requestUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      currTemp.textContent = data.main.temp + " C°"
+    });
+}
+
+
 
 searchBtn.addEventListener("click", sendCity);
 paris.addEventListener("click", function() {

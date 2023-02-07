@@ -19,21 +19,31 @@
     />
     <script src="assets/js/apiKey.js" defer></script>
     <script src="assets/js/app.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/71dc5f8d27.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header></header>
     <main>
       <section id="mainDashboard">
-        <h3>Weather <strong>Dashboard</strong></h3>
-        <form>
-          <input type="text" placeholder="Search city" required />
-          <button>Search</button>
-        </form>
+        <div class="header">
+          <h3>Weather <strong>Dashboard</strong></h3>
+          <form>
+            <input type="text" placeholder="Search city" required />
+            <button><i class="fa-solid fa-cloud-bolt"></i></button>
+          </form>
+        </div>
         <hr />
         <h3>Top <strong>Cities</strong></h3>
         <div class="cards">
           <div class="card">
-            <img id="amsterdam" src="assets/images/amsterdam.png" alt="amsterdam" />
+            <img
+              id="amsterdam"
+              src="assets/images/amsterdam.png"
+              alt="amsterdam"
+            />
             <p>Amsterdam</p>
           </div>
           <div class="card">
@@ -128,12 +138,17 @@
         </div>
       </section>
       <section id="cityInfo">
-        <h3>City <strong>Information</strong></h3>
-        <input type="text" placeholder="Search city" />
-        <p>Information about a city</p>
+        <h3>Today</h3>
+        <p class="currentDt">date</p>
+        <p class="currentTemp">Temp</p>
+        <p class="currentFl">Feels Like</p>
+        <div>
+          <p class="currentMax">max</p>
+          <p class="currentMin">min</p>
+        </div>
+        <p class="currentPlace">city, country</p>
       </section>
     </main>
-    <footer>
-    </footer>
+    <footer></footer>
   </body>
 </html>
