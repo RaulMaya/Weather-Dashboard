@@ -11,17 +11,20 @@ var wind = document.querySelectorAll(".wind");
 var pressure = document.querySelectorAll(".pressure");
 var condition = document.querySelectorAll(".status");
 
-var paris = document.getElementById("paris")
-var ny = document.getElementById("newyork")
-var rome = document.getElementById("rome")
-var amsterdam = document.getElementById("amsterdam")
-var london = document.getElementById("london")
+var paris = document.getElementById("paris");
+var ny = document.getElementById("newyork");
+var rome = document.getElementById("rome");
+var amsterdam = document.getElementById("amsterdam");
+var london = document.getElementById("london");
 
-var currTemp = document.querySelector(".currentTemp")
-var currMax = document.querySelector(".currentMax")
-var currMin = document.querySelector(".currentMin")
-var currDt = document.querySelector(".currentDt")
-var currPlace = document.querySelector(".currentPlace")
+var currTemp = document.querySelector(".currentTemp");
+var currMax = document.querySelector(".currentMax");
+var currMin = document.querySelector(".currentMin");
+var currDt = document.querySelector(".currentDt");
+var currPlace = document.querySelector(".currentPlace");
+var currFl = document.querySelector(".currentFl");
+var sunset = document.querySelector(".sunset");
+var sunrise = document.querySelector(".sunrise");
 
 function sendCity(event) {
   event.preventDefault();
@@ -55,7 +58,7 @@ function cityData(city) {
       var lon = data.city.coord.lon;
       additionalStats(lat, lon);
       for (var i = 0; i < 5; i++) {
-        cityTitle.textContent = city;
+        cityTitle.textContent = data.city.name;
         date[i].textContent = data.list[counter].dt_txt;
         forecast[i].textContent = data.list[counter].main.temp + " C° ☀️";
         feels[i].textContent = `(${data.list[counter].main.feels_like} C°)`;
@@ -68,7 +71,9 @@ function cityData(city) {
           descArr[j] = descArr[j].charAt(0).toUpperCase() + descArr[j].slice(1);
         }
         condition[i].innerHTML = `<div>${descArr.join(" ")}</div>
-                                  <img class="wheatherLogo" src="http://openweathermap.org/img/wn/${data.list[counter].weather[0].icon}@2x.png"
+                                  <img class="wheatherLogo" src="http://openweathermap.org/img/wn/${
+                                    data.list[counter].weather[0].icon
+                                  }@2x.png"
                                   alt="weatherCondition">`;
         counter = counter + 8;
       }
@@ -79,7 +84,7 @@ function cityData(city) {
     });
 }
 
-function additionalStats(lat, lon){
+function additionalStats(lat, lon) {
   var requestUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${key}`;
 
   fetch(requestUrl)
@@ -89,28 +94,74 @@ function additionalStats(lat, lon){
     .then(function (data) {
       console.log(data);
       currTemp.textContent = data.main.temp + " C°";
-      currDt.textContent = data.dt;
-      currMax.textContent = data.main.temp_max + " C°";
-      currMin.textContent = data.main.temp_min + " C°";
-      currPlace.textContent = data.name + ", " + data.sys.country
+      var dateObj = new Date(parseInt(data.dt + "000"));
+      currDt.textContent =
+        dateObj.getMonth() +
+        "-" +
+        dateObj.getDate() +
+        "-" +
+        dateObj.getFullYear();
+      // currDt.innerHTML = `<div>${
+      //   dateObj.getMonth() +
+      //   "-" +
+      //   dateObj.getDate() +
+      //   "-" +
+      //   dateObj.getFullYear()
+      // }</div>
+      // <img class="wheatherLogo" src="http://openweathermap.org/img/wn/${
+      //   data.weather[0].icon
+      // }@2x.png"
+      // alt="weatherCondition">`;
+      currMax.textContent ="Max: " +  data.main.temp_max + " C° 🔻";
+      currMin.textContent ="Min: " +   data.main.temp_min + " C° 🔻";
+      currPlace.textContent = data.name + ", " + data.sys.country;
+      currFl.textContent = "Feels like: " + data.main.feels_like + " C°";
+      var sunriseObj = new Date(parseInt(data.sys.sunrise + "000"));
+      sunrise.textContent =
+        "Sunrise: " +
+        sunriseObj.getMonth() +
+        "-" +
+        sunriseObj.getDate() +
+        "-" +
+        sunriseObj.getFullYear() +
+        "  " +
+        sunriseObj.getUTCHours() +
+        ":" +
+        sunriseObj.getUTCMinutes() +
+        ":" +
+        sunriseObj.getUTCSeconds() +
+        " 🌅";
+      var sunsetObj = new Date(parseInt(data.sys.sunset + "000"));
+      sunset.textContent =
+        "Sunset: " +
+        sunsetObj.getMonth() +
+        "-" +
+        sunsetObj.getDate() +
+        "-" +
+        sunsetObj.getFullYear() +
+        "  " +
+        sunsetObj.getUTCHours() +
+        ":" +
+        sunsetObj.getUTCMinutes() +
+        ":" +
+        sunsetObj.getUTCSeconds() +
+        " 🌇";
     });
 }
 
-
-
 searchBtn.addEventListener("click", sendCity);
-paris.addEventListener("click", function() {
-  cityData("Paris")
-})
-rome.addEventListener("click", function() {
-  cityData("Rome,It")
-})
-ny.addEventListener("click", function() {
-  cityData("New York")
-})
-london.addEventListener("click", function() {
-  cityData("London")
-})
-amsterdam.addEventListener("click", function() {
-  cityData("Amsterdam")
-})
+paris.addEventListener("click", function () {
+  cityData("Paris");
+});
+rome.addEventListener("click", function () {
+  cityData("Rome,It");
+});
+ny.addEventListener("click", function () {
+  cityData("New York");
+});
+london.addEventListener("click", function () {
+  cityData("London");
+});
+amsterdam.addEventListener("click", function () {
+  cityData("Amsterdam");
+});
