@@ -25,13 +25,18 @@
     ></script>
   </head>
   <body>
+    <div id="backdrop"></div>
+    <div id="modal">
+      <h3></h3>
+      <a class="close">&times;</a>
+    </div>
     <header></header>
     <main>
       <section id="mainDashboard">
         <div class="header">
           <h3>Weather <span>Dashboard</span></h3>
           <form class="search">
-            <input type="text" placeholder="search" id="searchText"/>
+            <input type="text" placeholder="search" id="searchText" required />
             <div class="symbol">
               <svg class="cloud">
                 <use xlink:href="#cloud" />
@@ -172,20 +177,28 @@
         </div>
       </section>
       <section id="cityInfo">
-        <p class="currentPlace"></p>
-        <p class="currentDt"></p>
-        <p class="currentTemp"></p>
-        <p class="currentFl"></p>
-        <p class="sunrise"></p>
-        <p class="sunset"></p>
-        <div class="maxmin">
-          <p class="currentMax"></p>
-          <p class="currentMin"></p>
-        </div>
-
-        <hr />
+        <article id="about">
+          <ul>
+            <li>To submit an input press the "ENTER" key when you are done.</li>
+            <li>This application use the <a href="https://openweathermap.org/">OpenWeather API</a>.</li>
+            <li>The dashboard will output the current weather and the next 5 days forecast of the city the user selected.</li>
+          </ul>
+        </article>
+        <article id="currentStatus">
+          <p class="currentPlace"></p>
+          <p class="currentDt"></p>
+          <p class="currentTemp"></p>
+          <p class="currentFl"></p>
+          <p class="sunrise"></p>
+          <p class="sunset"></p>
+          <div class="maxmin">
+            <p class="currentMax"></p>
+            <p class="currentMin"></p>
+          </div>
+          <hr />
+        </article>
         <div id="devInfo">
-          <a href="https://www.linkedin.com/in/raul-maya/"
+          <a href="https://github.com/RaulMaya"
             ><img src="assets/images/devrm.jpg" alt="myPP"
           /></a>
           <h3>Made with ❤️️ by RM</h3>

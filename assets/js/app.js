@@ -26,23 +26,17 @@ var sunset = document.querySelector(".sunset");
 var sunrise = document.querySelector(".sunrise");
 
 var inputText = document.getElementById("searchText");
+var backdropSection = document.getElementById('backdrop');
+var modal = document.getElementById('modal');
+var closeBtn = document.querySelector(".close");
+
+var currStatus =  document.getElementById("currentStatus");
+var about =  document.getElementById("about");
 
 function sendCity(event) {
   event.preventDefault();
   cityData(inputCity.value);
 }
-
-// function gettingCoords(city) {
-//   var requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${key}`;
-
-//   fetch(requestUrl)
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       getTemperatures(data[0].lat, data[0].lon)
-//     });
-// }
 
 function cityData(city) {
   //var requestUrl = `https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${lon}&units=metric`;
@@ -54,7 +48,20 @@ function cityData(city) {
     })
     .then(function (data) {
       var counter = 3;
-      console.log(data);
+      console.log(data.cod);
+      if (data.cod == 400) {
+        backdropSection.classList.toggle('visible');
+        modal.classList.toggle('visible');
+        modal.querySelector("h3").textContent = "ERROR 400: You didn't enter anything."
+        return
+      } else if (data.cod == 404) {
+        backdropSection.classList.toggle('visible');
+        modal.classList.toggle('visible');
+        modal.querySelector("h3").textContent= "ERROR 404: Sorry! We didn't find the city you were looking for."
+        return
+      }
+      currStatus.classList.add('visible');
+      about.classList.add('hide');
       var lat = data.city.coord.lat;
       var lon = data.city.coord.lon;
       additionalStats(lat, lon);
@@ -83,10 +90,6 @@ function cityData(city) {
                                   alt="weatherCondition">`;
         counter = counter + 8;
       }
-      // console.log(data.list[11].dt_txt)
-      // console.log(data.list[19].dt_txt)
-      // console.log(data.list[27].dt_txt)
-      // console.log(data.list[35].dt_txt)
     });
 }
 
@@ -113,18 +116,7 @@ function additionalStats(lat, lon) {
         "-" +
         dateObj.getDate() +
         "-" +
-        dateObj.getFullYear() + " " +weatherFace;
-      // currDt.innerHTML = `<div>${
-      //   dateObj.getMonth() +
-      //   "-" +
-      //   dateObj.getDate() +
-      //   "-" +
-      //   dateObj.getFullYear()
-      // }</div>
-      // <img class="wheatherLogo" src="http://openweathermap.org/img/wn/${
-      //   data.weather[0].icon
-      // }@2x.png"
-      // alt="weatherCondition">`;
+        dateObj.getFullYear() + " " +weatherFace; 
       currMax.textContent = "Max: " + data.main.temp_max + " C° 🔻";
       currMin.textContent = "Min: " + data.main.temp_min + " C° 🔻";
       currPlace.textContent = data.name + ", " + data.sys.country;
@@ -162,7 +154,11 @@ function additionalStats(lat, lon) {
     });
 }
 
-//searchBtn.addEventListener("click", sendCity);
+function toggleBackdrop() {
+  backdropSection.classList.toggle('visible');
+  modal.classList.toggle('visible');
+}
+
 paris.addEventListener("click", function () {
   cityData("Paris");
 });
@@ -189,3 +185,5 @@ inputText.addEventListener("keydown", function handle(e) {
 
   return false;
 });
+backdropSection.addEventListener('click', toggleBackdrop)
+closeBtn.addEventListener("click", toggleBackdrop)
